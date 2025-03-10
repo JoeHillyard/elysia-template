@@ -1,0 +1,10 @@
+{
+  "name": "stack-template",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "bun --filter * dev"
+  }
+}
