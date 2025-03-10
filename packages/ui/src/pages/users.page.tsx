@@ -3,7 +3,7 @@ import {MantineReactTable, type MRT_ColumnDef, useMantineReactTable,} from 'mant
 import {IconDevicesPlus, IconX} from "@tabler/icons-react";
 import {Button, Divider, Group, Modal, TextInput, Tooltip} from "@mantine/core";
 import {useDisclosure} from "@mantine/hooks";
-import {type UserInsert} from '@game-builder/api/src/db/schemas';
+import {type UserInsert, type UserSelect} from '@game-builder/api/src/db/schemas';
 
 const data: Omit<UserInsert, 'password'>[] = [
 	{
@@ -23,16 +23,16 @@ export function UsersPage() {
 	const [opened, {open, close}] = useDisclosure(false);
 	const [email, setEmail] = useState('')
 
-	const columns = useMemo<MRT_ColumnDef<Partial<UserSelectSchema>>[]>(
+	const columns = useMemo<MRT_ColumnDef<Partial<UserSelect>>[]>(
 		() => [
 			{
-				accessorFn: (originalRow) => `${originalRow.firstName} ${originalRow.lastName}`,
 				id: 'name',
-				header: 'Name'
+				header: 'Name',
+				accessorFn: (originalRow) => `${originalRow.firstName} ${originalRow.lastName}`
 			},
 			{
-				accessorKey: 'email',
-				header: 'Email'
+				header: 'Email',
+				accessorKey: 'email'
 			},
 			{
 				header: 'Actions',
