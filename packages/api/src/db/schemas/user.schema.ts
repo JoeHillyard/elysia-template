@@ -1,5 +1,6 @@
 import {pgTable, varchar} from "drizzle-orm/pg-core";
 import {baseColumns} from "./shared";
+import {createInsertSchema, createSelectSchema} from "drizzle-typebox";
 
 export const users = pgTable('users', {
 	...baseColumns,
@@ -8,3 +9,8 @@ export const users = pgTable('users', {
 	email: varchar().notNull(),
 	password: varchar().notNull(),
 })
+
+const userSelectSchema = createSelectSchema(users);
+
+const userSelectSchema = createInsertSchema(users);
+

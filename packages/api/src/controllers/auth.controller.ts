@@ -49,7 +49,7 @@ export const AuthController = new Elysia({prefix: 'auth'})
 		async ({body, jwt}) => {
 			const {email, password} = body
 
-			const foundUser = await db.query.user.findFirst({where: eq(user.email, email)})
+			const foundUser = await db.query.users.findFirst({where: eq(users.email, email)})
 
 			if (!foundUser) {
 				throw new Error('Invalid credentials')
@@ -79,22 +79,19 @@ export const AuthController = new Elysia({prefix: 'auth'})
 			})
 		}
 	)
-	.post(
-		'/validate', async ({body, jwt}) => {
-			const {token} = body
+	.post('/validate', async ({body, jwt}) => {
+		const {token} = body
 
-			const user = await jwt.verify(token) as { userId: string, email: string }
+		const user = await jwt.verify(token) as { userId: string, email: string }
 
-			return {
-				user,
-				is_valid: !!user
-			}
-		},
-		{
-			body: t.Object({token: t.String()}),
-			response: t.Object({
-				is_valid: t.Boolean(),
-				user: t.Object({userId: t.String(), email: t.String()})
-			})
+		return {
+			user,
+			is_valid: !!user
 		}
-	)
+	}, {
+		body: t.Object({token: t.String()}),
+		response: t.Object({
+			is_valid: t.Boolean(),
+			user: t.Object({userId: t.String(), email: t.String()})
+		})
+	})
