@@ -3,12 +3,12 @@
   "version": "1.0.50",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "bunx --bun vite",
     "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
-    "@ap0nia/eden-react-query": "1.6.0",
+    "@ap0nia/eden-react-query": "1.6.1",
     "@elysiajs/eden": "^1.2.0",
     "@game-builder/api": "^workspace",
     "@mantine/charts": "^7.16.1",
@@ -20,7 +20,7 @@
     "@mantine/notifications": "^7.16.1",
     "@rjsf/core": "^5.24.3",
     "@rjsf/validator-ajv8": "^5.24.3",
-    "@tabler/icons-react": "^3.29.0",
+    "@tabler/icons-react": "^3.31.0",
     "@tanstack/react-router": "^1.97.25",
     "dayjs": "^1.11.13",
     "fuzzysort": "^3.1.0",

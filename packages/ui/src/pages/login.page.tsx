@@ -46,6 +46,7 @@ export function LoginPage(props: PaperProps) {
 	const {mutate: register} = client.auth.register.post.useMutation(opts)
 	const {mutate: login} = client.auth.login.post.useMutation(opts)
 
+
 	const submit = (values: typeof form.values) => {
 		if (type === 'register') {
 			register(values)

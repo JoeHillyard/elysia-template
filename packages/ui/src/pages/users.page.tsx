@@ -1,11 +1,11 @@
 import {useMemo, useState} from 'react';
 import {MantineReactTable, type MRT_ColumnDef, useMantineReactTable,} from 'mantine-react-table';
-import type {UserSelectSchema} from "api/src/db/schema.ts";
 import {IconDevicesPlus, IconX} from "@tabler/icons-react";
 import {Button, Divider, Group, Modal, TextInput, Tooltip} from "@mantine/core";
 import {useDisclosure} from "@mantine/hooks";
+import {type UserInsert} from '@game-builder/api/src/db/schemas';
 
-const data: Pick<UserSelectSchema, 'firstName' | 'lastName' | 'email'>[] = [
+const data: Omit<UserInsert, 'password'>[] = [
 	{
 		firstName: 'John',
 		lastName: 'John',
@@ -37,7 +37,7 @@ export function UsersPage() {
 			{
 				header: 'Actions',
 				size: 25,
-				Cell: (row: UserSelectSchema) => (
+				Cell: (row) => (
 					<Group>
 						<Tooltip label="Invite to game">
 							<IconDevicesPlus/>

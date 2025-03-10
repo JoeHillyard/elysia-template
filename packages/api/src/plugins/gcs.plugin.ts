@@ -18,7 +18,7 @@ type FileUpload = CreateBucket & {
 	title: string
 }
 
-export const gcsPlugin = new Elysia({name: 'gcs'})
+export const GCSPlugin = new Elysia({name: 'gcs'})
 	.decorate('createBucket', async ({bucketName}: CreateBucket) => {
 
 		const [bucket] = await storage.createBucket(bucketName)

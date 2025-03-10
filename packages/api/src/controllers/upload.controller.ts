@@ -1,10 +1,10 @@
 import {Elysia, t} from "elysia";
 import {db} from "../db/db";
-import {gcsPlugin} from "../plugins/gcs.plugin";
+import {GCSPlugin} from "../plugins/gcs.plugin";
 
 export const UploadController = new Elysia({prefix: '/upload'})
 	.decorate('db', db)
-	.use(gcsPlugin)
+	.use(GCSPlugin)
 	.post('/bucket', async function ({body, error, createBucket, uploadFile}) {
 		try {
 			await createBucket({bucketName: body.bucketName})
@@ -19,6 +19,7 @@ export const UploadController = new Elysia({prefix: '/upload'})
 		try {
 
 			const file = body.file;
+			console.log(file);
 
 			await createBucket({bucketName: body.bucketName})
 

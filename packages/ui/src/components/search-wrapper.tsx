@@ -4,13 +4,6 @@ import type {SearchControlsProps, SearchWrapperProps, TagSectionProps, ViewType}
 import {useEffect, useState} from 'react';
 import {useIsMobile} from "@hooks/isMobile.hook.ts";
 import { useFilterData, useTagManagement } from '@utils/search';
-import {
-	IconGridDots,
-	IconLayoutBottombarCollapse,
-	IconLayoutBottombarExpand, IconList,
-	IconSearch,
-	IconX
-} from '@tabler/icons-react';
 
 function SearchControls({input, setInput, viewType, setViewType, isMobile, hideControls, title}: SearchControlsProps) {
 	const finalHideControls = hideControls || isMobile;
