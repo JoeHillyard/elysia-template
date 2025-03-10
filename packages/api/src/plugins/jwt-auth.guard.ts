@@ -1,13 +1,10 @@
 import jwt from "@elysiajs/jwt"
 import {Elysia} from "elysia";
 
-export const authPlugin = new Elysia()
-	.use(
-		jwt({
-			name: 'jwt',
-			secret: process.env.JWT_SECRET!,
-		})
-	)
+export const JWTPlugin = jwt({name: 'jwt', secret: process.env.JWT_SECRET!})
+
+export const AuthPlugin = new Elysia()
+	.use(JWTPlugin)
 	.derive(({ headers, jwt }) => {
 
 		return {

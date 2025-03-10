@@ -1,18 +1,18 @@
-import jwt from "@elysiajs/jwt";
 import {Elysia, t} from "elysia";
 import {db} from "../db/db";
 import {eq} from "drizzle-orm";
-import {user} from "../db/schema";
+import {users} from "../db/schemas";
+import {JWTPlugin} from "../plugins/jwt-auth.guard";
 
 export const AuthController = new Elysia({prefix: 'auth'})
-	.use(jwt({name: 'jwt', secret: process.env.JWT_SECRET!}))
+	.use(JWTPlugin)
 	.post('/register',
 		async ({body, jwt}) => {
 
 			const {email, password, ...rest} = body
 
-			const existingUser = await db.query.user.findFirst({
-				where: eq(user.email, email)
+			const existingUser = await db.query.users.findFirst({
+				where: eq(users.email, email)
 			})
 
 			if (existingUser) {
@@ -23,7 +23,7 @@ export const AuthController = new Elysia({prefix: 'auth'})
 
 			const newUser = {email, password: hashedPassword, ...rest}
 
-			const [createdUser] = await db.insert(user).values(newUser).returning()
+			const [createdUser] = await db.insert(users).values(newUser).returning()
 
 			const token = await jwt.sign({userId: createdUser.id, email: createdUser.email})
 

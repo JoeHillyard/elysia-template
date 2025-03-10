@@ -2,7 +2,6 @@ import {Elysia, t} from "elysia";
 import Anthropic from '@anthropic-ai/sdk'
 import {AnthropicPlugin} from "../plugins/anthropic.plugin";
 
-
 const anthropic = new Anthropic({
 	apiKey: process.env.ANTHROPIC_KEY
 })

@@ -1,7 +1,6 @@
 import {client, otherClient} from "./client.ts";
 import type {LoaderFunctionArgs} from "react-router";
 
-
 export const clientLoader = async ({params}: LoaderFunctionArgs) => {
 	if(!params.id) return null
 	return (await otherClient.id({id: params.id}).get()).data

@@ -7,8 +7,6 @@ import {UsersPage} from "@pages/users.page.tsx";
 import {LoginPage} from "@pages/login.page.tsx";
 import type {ComponentType} from "react";
 import {clientLoader} from "@utils/loader-wrapper.ts";
-import {FormBuilderPage} from "@pages/form-builder.page.tsx";
-import {WidgetBuilderPage} from "@pages/widget-builder.page.tsx";
 
 interface CustomRouteProps {
 	icon?: ComponentType;
@@ -32,14 +30,6 @@ export const routes: AppRoute[] = [
 				element: <DashboardPage />,
 				loader: clientLoader,
 				label: 'Home'
-			},{
-				path: '/widget',
-				label: 'Widget Builder',
-				element: <WidgetBuilderPage />
-			},{
-				path: '/form',
-				label: 'Form Builder',
-				element: <FormBuilderPage />
 			},
 			{
 				path: 'users',

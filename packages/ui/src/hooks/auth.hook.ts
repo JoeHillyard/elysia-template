@@ -15,7 +15,7 @@ export const useAuthRedirect = () => {
 	const [authToken, setAuthToken] = useAuthToken();
 
 	const route = findRouteByPath(pathname);
-
+	
 	const { mutate: validateToken, isPending } = client.auth.validate.post.useMutation({
 		onSuccess: (data) => {
 			setIsAuthenticated(true);

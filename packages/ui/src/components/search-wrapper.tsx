@@ -12,16 +12,7 @@ import {
 	IconX
 } from '@tabler/icons-react';
 
-
-function SearchControls({
-							input,
-							setInput,
-							viewType,
-							setViewType,
-							isMobile,
-							hideControls,
-							title
-						}: SearchControlsProps) {
+function SearchControls({input, setInput, viewType, setViewType, isMobile, hideControls, title}: SearchControlsProps) {
 	const finalHideControls = hideControls || isMobile;
 
 	return (
