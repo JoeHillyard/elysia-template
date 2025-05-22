@@ -13,7 +13,6 @@ import {
 } from '@mantine/core';
 import {useForm} from '@mantine/form';
 import {upperFirst, useToggle} from '@mantine/hooks';
-import {client} from '@utils/client';
 import {useAuthToken} from "@hooks/jwt.hook.ts";
 import { useNavigate } from 'react-router';
 
@@ -43,15 +42,12 @@ export function LoginPage(props: PaperProps) {
 		}
 	}
 
-	const {mutate: register} = client.auth.register.post.useMutation(opts)
-	const {mutate: login} = client.auth.login.post.useMutation(opts)
-
 
 	const submit = (values: typeof form.values) => {
 		if (type === 'register') {
-			register(values)
+			//register(values)
 		} else {
-			login({ email: values.email, password: values.password })
+			//login({ email: values.email, password: values.password })
 		}
 	}
 

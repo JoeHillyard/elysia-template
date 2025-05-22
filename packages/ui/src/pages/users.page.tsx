@@ -3,9 +3,8 @@ import {MantineReactTable, type MRT_ColumnDef, useMantineReactTable,} from 'mant
 import {IconDevicesPlus, IconX} from "@tabler/icons-react";
 import {Button, Divider, Group, Modal, TextInput, Tooltip} from "@mantine/core";
 import {useDisclosure} from "@mantine/hooks";
-import {type UserInsert, type UserSelect} from '@game-builder/api/src/db/schemas';
 
-const data: Omit<UserInsert, 'password'>[] = [
+const data = [
 	{
 		firstName: 'John',
 		lastName: 'John',

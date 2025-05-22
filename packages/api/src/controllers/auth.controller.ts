@@ -7,7 +7,7 @@ import {JWTPlugin} from "../plugins/jwt-auth.guard";
 export const AuthController = new Elysia({prefix: 'auth'})
 	.use(JWTPlugin)
 	.post('/register',
-		async ({body, jwt}) => {
+		async ({body, jwt,}) => {
 
 			const {email, password, ...rest} = body
 
@@ -37,7 +37,8 @@ export const AuthController = new Elysia({prefix: 'auth'})
 				firstName: t.String(),
 				lastName: t.String(),
 				email: t.String({format: 'email'}),
-				password: t.String({minLength: 8})
+				password: t.String({minLength: 8}),
+				dateOfBirth: t.Date()
 			}),
 			response: t.Object({
 				message: t.String(),

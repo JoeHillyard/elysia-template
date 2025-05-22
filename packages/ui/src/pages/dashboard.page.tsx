@@ -1,18 +1,16 @@
 import { Group, Text } from '@mantine/core';
 import { IconUpload, IconPhoto, IconX } from '@tabler/icons-react';
 import { Dropzone, type DropzoneProps, IMAGE_MIME_TYPE } from '@mantine/dropzone';
-import {client} from "@utils/client.ts";
 import {usePageTitle} from "@hooks/pageTitle.hook.ts";
 
 export const DashboardPage = () => {
 
-	const {mutate: upload} = client.upload.file.post.useMutation()
 
 	usePageTitle("Dashboard")
 
 	return (
 		<Dropzone
-			onDrop={(files) => upload({bucketName: '', file: files[0], title: ''})}
+			//onDrop={(files) => upload({bucketName: '', file: files[0], title: ''})}
 			onReject={(files) => console.log('rejected files', files)}
 			maxSize={5 * 1024 ** 2}
 			accept={IMAGE_MIME_TYPE}
