@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "bun --watch index.html",
     "build:old": "vite build",
-    "build": "bun build src/index.tsx --outdir distt",
+    "build": "bun build index.html --outdir distt",
     "preview": "vite preview"
   },
   "dependencies": {
